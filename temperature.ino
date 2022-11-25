@@ -15,7 +15,7 @@ const float R1 = 10000.0; //Resisteencia de 10k em série com o NTC10k
 float get_temperature(float voltage)
 {
    float Rth = R1*((3.3/voltage) - 1);
-   return (beta*T0)/(T0*log(Rth/R0)) - 273.16;
+   return (beta*T0)/(T0*log(Rth/R0)+beta) - 273.16;
 }
 
 void setup()
