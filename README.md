@@ -3,4 +3,5 @@ Implementação de um monitor de temperatura utilizando ESP32, python e um termi
 
 Utiliza as bibliotecas pySerial e pySimpleGui
 
+![alt text](https://github.com/RafaelMarasca/ESP_TEMPERATURA/printGUI.png?raw=true)
 
