@@ -6,7 +6,7 @@
 #define T_PIN 34 //Pino de temperatura 
 
 const float beta = 3380; //Define o valor de beta do NTC10k
-const float T0 = (25 + 273.16); //25º em Kelvin
+const float t0 = (25 + 273.16); //25º em Kelvin
 const float R0 = 10000.0; //Resistencia em 25º
 const float R1 = 10000.0; //Resisteencia de 10k em série com o NTC10k
 
@@ -15,12 +15,12 @@ const float R1 = 10000.0; //Resisteencia de 10k em série com o NTC10k
 float get_temperature(float voltage)
 {
    float Rth = R1*((3.3/voltage) - 1);
-   return (beta*T0)/(T0*log(Rth/R0)+beta) - 273.16;
+   return ((beta*t0)/(t0*log(Rth/R0) + beta)) - 273.16;
 }
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
 }
 
 void loop()
@@ -29,5 +29,5 @@ void loop()
   float voltage = analogRead(T_PIN)*3.3/4095.0; //Converte o a leitura do ADC para um valor de tensão
   float temperature = get_temperature(voltage); //Obtem a temperatura
   
-  Serial.write(temperature); //Envia via serial
+  Serial.println(temperature); //Envia via serial
 } 
